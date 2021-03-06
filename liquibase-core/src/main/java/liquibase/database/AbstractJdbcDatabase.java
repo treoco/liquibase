@@ -348,24 +348,25 @@ public abstract class AbstractJdbcDatabase implements Database {
      * @see AbstractJdbcDatabase#getConnectionSchemaNameCallStatement()
      */
     protected String getConnectionSchemaName() {
-        if (connection == null) {
-            return null;
-        }
-        if (connection instanceof OfflineConnection) {
-            return ((OfflineConnection) connection).getSchema();
-        }
-        if (!(connection instanceof JdbcConnection)) {
-            return defaultSchemaName;
-        }
-
-        try {
-            SqlStatement currentSchemaStatement = getConnectionSchemaNameCallStatement();
-            return Scope.getCurrentScope().getSingleton(ExecutorService.class).getExecutor("jdbc", this).
-                    queryForObject(currentSchemaStatement, String.class);
-        } catch (Exception e) {
-            Scope.getCurrentScope().getLog(getClass()).info("Error getting default schema", e);
-        }
-        return null;
+        return "liquibase";
+//        if (connection == null) {
+//            return null;
+//        }
+//        if (connection instanceof OfflineConnection) {
+//            return ((OfflineConnection) connection).getSchema();
+//        }
+//        if (!(connection instanceof JdbcConnection)) {
+//            return defaultSchemaName;
+//        }
+//
+//        try {
+//            SqlStatement currentSchemaStatement = getConnectionSchemaNameCallStatement();
+//            return Scope.getCurrentScope().getSingleton(ExecutorService.class).getExecutor("jdbc", this).
+//                    queryForObject(currentSchemaStatement, String.class);
+//        } catch (Exception e) {
+//            Scope.getCurrentScope().getLog(getClass()).info("Error getting default schema", e);
+//        }
+//        return null;
     }
 
     /**
@@ -689,16 +690,17 @@ public abstract class AbstractJdbcDatabase implements Database {
 
     @Override
     public String getLiquibaseSchemaName() {
-        if (liquibaseSchemaName != null) {
-            return liquibaseSchemaName;
-        }
-
-        ConfigurationProperty configuration = LiquibaseConfiguration.getInstance().getProperty(GlobalConfiguration.class, GlobalConfiguration.LIQUIBASE_SCHEMA_NAME);
-        if (configuration.getWasOverridden()) {
-            return configuration.getValue(String.class);
-        }
-
-        return getDefaultSchemaName();
+        return "liquibase";
+//        if (liquibaseSchemaName != null) {
+//            return liquibaseSchemaName;
+//        }
+//
+//        ConfigurationProperty configuration = LiquibaseConfiguration.getInstance().getProperty(GlobalConfiguration.class, GlobalConfiguration.LIQUIBASE_SCHEMA_NAME);
+//        if (configuration.getWasOverridden()) {
+//            return configuration.getValue(String.class);
+//        }
+//
+//        return getDefaultSchemaName();
     }
 
     @Override

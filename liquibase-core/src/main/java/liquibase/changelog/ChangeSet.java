@@ -532,9 +532,9 @@ public class ChangeSet implements Conditional, ChangeLogChild {
             // set object quoting strategy
             database.setObjectQuotingStrategy(objectQuotingStrategy);
 
-            if (database.supportsDDLInTransaction()) {
-                database.setAutoCommit(!runInTransaction);
-            }
+//            if (database.supportsDDLInTransaction()) {
+//                database.setAutoCommit(!runInTransaction);
+//            }
 
             executor.comment("Changeset " + toString(false));
             if (StringUtil.trimToNull(getComments()) != null) {

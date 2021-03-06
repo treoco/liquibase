@@ -27,6 +27,7 @@ public class InitializeDatabaseChangeLogLockTableGenerator extends AbstractSqlGe
         database.setObjectQuotingStrategy(ObjectQuotingStrategy.LEGACY);
         try {
             DeleteStatement deleteStatement = new DeleteStatement(database.getLiquibaseCatalogName(), database.getLiquibaseSchemaName(), database.getDatabaseChangeLogLockTableName());
+            deleteStatement.setWhere("id is NOT NULL");
             InsertStatement insertStatement = new InsertStatement(database.getLiquibaseCatalogName(), database.getLiquibaseSchemaName(), database.getDatabaseChangeLogLockTableName())
                     .addColumnValue("ID", 1)
                     .addColumnValue("LOCKED", Boolean.FALSE);

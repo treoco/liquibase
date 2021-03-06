@@ -58,11 +58,14 @@ public class ChangeLogParameters {
             } catch (DatabaseException ignore) {
             }
             this.set("database.defaultCatalogName", database.getDefaultCatalogName());
-            this.set("database.defaultSchemaName", database.getDefaultSchemaName());
-            this.set("database.defaultSchemaNamePrefix", (StringUtil.trimToNull(database.getDefaultSchemaName()) ==
-                null) ? "" : ("." + database.getDefaultSchemaName()));
+//            this.set("database.defaultSchemaName", database.getDefaultSchemaName());
+            this.set("database.defaultSchemaName", "liquibase");
+            //this.set("database.defaultSchemaNamePrefix", (StringUtil.trimToNull(database.getDefaultSchemaName()) ==
+                //null) ? "" : ("." + database.getDefaultSchemaName()));
+            this.set("database.defaultSchemaNamePrefix", "");
             this.set("database.lineComment", database.getLineComment());
             this.set("database.liquibaseSchemaName", database.getLiquibaseSchemaName());
+//            this.set("database.liquibaseSchemaName", "liquibase");
             this.set("database.typeName", database.getShortName());
             try {
                 this.set("database.isSafeToRunUpdate", database.isSafeToRunUpdate());

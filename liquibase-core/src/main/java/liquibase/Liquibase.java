@@ -199,7 +199,8 @@ public class Liquibase implements AutoCloseable {
     }
 
     public void update(Contexts contexts, LabelExpression labelExpression) throws LiquibaseException {
-        update(contexts, labelExpression, true);
+//        update(contexts, labelExpression, true);
+        update(contexts, labelExpression, false);
     }
 
     /**
