@@ -33,7 +33,13 @@ public class TagDatabaseGenerator extends AbstractSqlGenerator<TagDatabaseStatem
             String dateColumnNameEscaped = database.escapeObjectName("DATEEXECUTED", Column.class);
             String tagColumnNameEscaped = database.escapeObjectName("TAG", Column.class);
             String tagEscaped = DataTypeFactory.getInstance().fromObject(statement.getTag(), database).objectToSql(statement.getTag(), database);
-            if (database instanceof MySQLDatabase) {
+            if (database instanceof BigQueryDatabase) {
+                return new Sql[]{
+                        new UnparsedSql("UPDATE `" + tableNameEscaped + "`" +
+                                " SET TAG=" + tagEscaped +
+                                " WHERE DATEEXECUTED = (SELECT MAX(DATEEXECUTED) FROM `" + tableNameEscaped + "`);")
+                };
+            } else if (database instanceof MySQLDatabase) {
                 return new Sql[]{
                         new UnparsedSql(
                                 "UPDATE " + tableNameEscaped + " AS C " +

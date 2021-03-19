@@ -1,3 +1,4 @@
+liquibase.database.core.BigQueryDatabase
 liquibase.database.core.CockroachDatabase
 liquibase.database.core.DB2Database
 liquibase.database.core.Db2zDatabase

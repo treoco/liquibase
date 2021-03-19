@@ -825,7 +825,7 @@ public class Liquibase implements AutoCloseable {
                 HubUpdater hubUpdater = null;
                 try {
                     changeLog = getDatabaseChangeLog();
-                    checkLiquibaseTables(false, changeLog, contexts, labelExpression);
+//                    checkLiquibaseTables(false, changeLog, contexts, labelExpression);
 
                     changeLog.validate(database, contexts, labelExpression);
 
@@ -1774,8 +1774,8 @@ public class Liquibase implements AutoCloseable {
                 try {
                     ChangeLogHistoryServiceFactory.getInstance().getChangeLogService(database).generateDeploymentId();
 
-                    checkLiquibaseTables(false, null, new Contexts(),
-                            new LabelExpression());
+//                    checkLiquibaseTables(false, null, new Contexts(),
+//                            new LabelExpression());
                     getDatabase().tag(tagString);
                 } finally {
                     try {

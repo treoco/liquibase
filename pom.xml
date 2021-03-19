@@ -18,7 +18,7 @@
         <module>liquibase-core</module>
         <module>liquibase-maven-plugin</module>
         <module>liquibase-cdi</module>
-        <module>liquibase-integration-tests</module>
+<!--        <module>liquibase-integration-tests</module> -->
         <module>liquibase-dist</module>
         <module>liquibase-extension-examples</module>
     </modules>

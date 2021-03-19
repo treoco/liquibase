@@ -725,9 +725,9 @@ public class ChangeSet implements Conditional, ChangeLogChild {
             database.setObjectQuotingStrategy(objectQuotingStrategy);
 
             // set auto-commit based on runInTransaction if database supports DDL in transactions
-            if (database.supportsDDLInTransaction()) {
-                database.setAutoCommit(!runInTransaction);
-            }
+//            if (database.supportsDDLInTransaction()) {
+//                database.setAutoCommit(!runInTransaction);
+//            }
 
             if (hasCustomRollbackChanges()) {
                 final List<SqlStatement> statements = new LinkedList<>();
